@@ -48,24 +48,6 @@ Joystick_ Joystick(
   false                         // includeSteering
 );
 
-void setup() {
-
-  Joystick.setXAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
-  Joystick.setYAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
-  Joystick.setZAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
-  
-  Joystick.setRxAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
-  Joystick.setRyAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
-  Joystick.setRzAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
-  
-  Joystick.begin(false);
-  ibusSerial.begin(115200);
-}
-
-void loop() {
-  ReadRxPin();
-}
-
 bool VerifyChecksum(uint16_t compare, byte low, byte high) {
   return compare == (uint16_t)low + ((uint16_t)high << 8);
 }
@@ -151,4 +133,22 @@ void ReadRxPin() {
       ibus_checksum = 0;
     }
   }
+}
+
+void setup() {
+
+  Joystick.setXAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
+  Joystick.setYAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
+  Joystick.setZAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
+  
+  Joystick.setRxAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
+  Joystick.setRyAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
+  Joystick.setRzAxisRange(IBUS_CHANNEL_MIN, IBUS_CHANNEL_MAX);
+  
+  Joystick.begin(false);
+  ibusSerial.begin(115200);
+}
+
+void loop() {
+  ReadRxPin();
 }
