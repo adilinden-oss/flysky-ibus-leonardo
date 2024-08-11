@@ -32,7 +32,7 @@ static int joystick_data[IBUS_MAXCHANNELS];
 
 Joystick_ Joystick(
   JOYSTICK_DEFAULT_REPORT_ID,   // hidReportId
-  JOYSTICK_TYPE_MULTI_AXIS,     // joystickType
+  JOYSTICK_TYPE_JOYSTICK,       // joystickType
   0,                            // buttonCount
   0,                            // hatSwitchCount
   true,                         // includeXAxis
